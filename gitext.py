@@ -12,7 +12,7 @@ class Download():
 						dfile = urllib.request.urlretrieve(files.download_url, local_file_name)
 						return
 		else:
-			target_repo = user.get_repo(user.get_user() + repo)
+			target_repo = user.get_repo(repo)
 
 		for files in target_repo.get_contents(""):
 			if files.path == target_filename:
