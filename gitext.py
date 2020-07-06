@@ -16,7 +16,10 @@ def download_file(token, target_filename,local_file_name, repo=None):
 
 	for files in target_repo.get_contents(""):
 		if files.path == target_filename:
-			dfile = urllib.request.urlretrieve(files.download_url, local_file_name)
+			ext = len(files.path)
+			extension = files.path[ext - 3 :]
+			print(extension)
+			dfile = urllib.request.urlretrieve(files.download_url, local_file_name + extension)
 			return
 
 
