@@ -1,6 +1,6 @@
 import urllib.request
 from github import Github
-class Dowload():
+class Download():
 	def download_file(token, target_filename,local_file_name, repo=None):
 		user = Github(token)
 	
@@ -12,7 +12,7 @@ class Dowload():
 						dfile = urllib.request.urlretrieve(files.download_url, local_file_name)
 						return
 		else:
-			target_repo = user.get_repo(repo)
+			target_repo = user.get_repo(user.get_user() + repo)
 
 		for files in target_repo.get_contents(""):
 			if files.path == target_filename:
@@ -20,5 +20,3 @@ class Dowload():
 				extension = files.path[ext - 3 :]
 				dfile = urllib.request.urlretrieve(files.download_url, local_file_name + extension)
 				return
-
-
